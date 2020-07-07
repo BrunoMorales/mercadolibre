@@ -9,7 +9,7 @@ const NavBar: FunctionComponent<navBarProps> = ({ onSubmit }): ReactElement => {
     const [searchInput, setSearchInput] = useState<string>('')
 
     const handleType = ({ target: { value } }: { target: { value: string } }) => setSearchInput(value)
-    const handleSubmit = () => onSubmit(searchInput)
+    const handleSubmit = () => { onSubmit(searchInput) }
 
     return (
         <nav className='navbar'>
