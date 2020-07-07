@@ -8,8 +8,7 @@
     
     
     .navbar-wrapper{
-        width: '100%';
-        max-width: 768px;
+        max-width: $max-col-width;
         display: flex;
         justify-content: center;
         align-items: stretch;

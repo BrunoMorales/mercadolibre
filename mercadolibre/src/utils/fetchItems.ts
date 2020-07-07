@@ -7,7 +7,7 @@ const fetchItems = async (searchInput: string) => {
                 q: searchInput
             }
         })
-        console.log(response.data)
+        return (response.data)
     } catch (error) {
         console.error('Error while searching items in server', error)
     }

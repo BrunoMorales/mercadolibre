@@ -1,11 +1,21 @@
-import React, { FunctionComponent, ReactElement } from "react";
+import React, { FunctionComponent, ReactElement, useEffect } from "react";
+import './SearchResults.scss'
+import { useParams, RouteProps } from 'react-router-dom'
+import fetchItems from "../../utils/fetchItems";
 
 
-const SearchResults: FunctionComponent = (): ReactElement => {
+const SearchResults: FunctionComponent = (props: RouteProps): ReactElement => {
+    console.log('params: ', props.location?.search)
+
+    useEffect(() => {
+        fetchItems('')
+    }, [])
 
     return (
-        <section>
-
+        <section className='search-results'>
+            <div className='result-container'>
+                holaa
+            </div>
         </section>
     )
 }
