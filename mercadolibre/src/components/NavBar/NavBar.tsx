@@ -1,13 +1,14 @@
 import React, { FunctionComponent, ReactElement, useState } from "react";
 import './NavBar.scss'
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 
 const NavBar: FunctionComponent = (): ReactElement => {
     const [searchInput, setSearchInput] = useState<string>('')
+    const routerHistory = useHistory()
 
     const handleType = ({ target: { value } }: { target: { value: string } }) => setSearchInput(value)
-    const submitOnEnter = (e: React.KeyboardEvent) => { if (e.keyCode === 13) { console.log('enter was pressed') } }
+    const submitOnEnter = (e: React.KeyboardEvent) => { if (e.keyCode === 13) { routerHistory.push(`/items?search=${searchInput}`) } }
 
     return (
         <nav className='navbar'>
