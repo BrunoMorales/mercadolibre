@@ -7,8 +7,9 @@ const NavBar: FunctionComponent = (): ReactElement => {
     const [searchInput, setSearchInput] = useState<string>('')
     const routerHistory = useHistory()
 
+    const searchLink = (): string => searchInput ? `/items?search=${searchInput}` : '/'
     const handleType = ({ target: { value } }: { target: { value: string } }) => setSearchInput(value)
-    const submitOnEnter = (e: React.KeyboardEvent) => { if (e.keyCode === 13) { routerHistory.push(`/items${searchInput && '?search=' + searchInput}`) } }
+    const submitOnEnter = (e: React.KeyboardEvent) => { if (e.keyCode === 13) { routerHistory.push(searchLink()) } }
 
     return (
         <nav className='navbar'>
@@ -19,7 +20,7 @@ const NavBar: FunctionComponent = (): ReactElement => {
                 </Link>
                 <div className='search-wrapper'>
                     <input value={searchInput} onChange={handleType} className='search-box' placeholder='Nunca dejes de buscar' onKeyDown={submitOnEnter} />
-                    <Link to={{ pathname: `/items`, search: searchInput && `search=${searchInput}` }} className='search-button'>
+                    <Link to={searchLink()} className='search-button'>
                         <i className='material-icons'>search</i>
                     </Link>
                 </div>

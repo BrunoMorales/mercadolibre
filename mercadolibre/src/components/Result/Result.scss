@@ -1,0 +1,15 @@
+@import 'src/variables';
+
+.result{
+    display:flex;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid $ml-gray;
+    padding: 24px 0;
+    align-items: stretch;
+
+    .thumbnail{
+        object-fit: contain;
+        
+    }
+}

@@ -1,8 +1,10 @@
 import React, { FunctionComponent, ReactElement, useEffect, useState } from "react";
 import './SearchResults.scss'
-import { useParams, RouteProps } from 'react-router-dom'
+import { RouteProps } from 'react-router-dom'
 import fetchItems, { result } from "../../utils/fetchItems";
+import Result from "../../components/Result";
 
+const ELEMENTS_TO_SHOW: number = 4
 
 
 const SearchResults: FunctionComponent = (props: RouteProps): ReactElement => {
@@ -10,21 +12,21 @@ const SearchResults: FunctionComponent = (props: RouteProps): ReactElement => {
     const [results, setResults] = useState<result[] | undefined>(undefined)
 
     useEffect(() => {
-        params && fetchItems(params)
-            .then((res) =>
-                setResults(res)
-            )
+        params ?
+            fetchItems(params)
+                .then((res) =>
+                    setResults(res)
+                )
+            :
+            setResults([])
     }, [params])
-
-
-    useEffect(() => {
-        console.log('res,', results)
-    }, [results])
 
     return (
         <section className='search-results'>
             <div className='result-container'>
-                {params}
+                {results?.slice(0, ELEMENTS_TO_SHOW).map((result) =>
+                    <Result data={result} />
+                )}
             </div>
         </section>
     )
