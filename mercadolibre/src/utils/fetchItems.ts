@@ -1,13 +1,27 @@
 import apiClient from './apiClient'
 
-const fetchItems = async (searchInput: string) => {
+export interface result {
+    id: string,
+    title: string,
+    thumbnail: string,
+    price: number,
+    condition: string,
+    sold_quantity: number,
+    address: {
+        state_name: string,
+        city_name: string,
+    },
+    category_id: string,
+}
+
+const fetchItems = async (searchInput: string): Promise<result[] | undefined> => {
     try {
         const response = await apiClient.get('/search', {
             params: {
                 q: searchInput
             }
         })
-        return (response.data)
+        return (response.data.results)
     } catch (error) {
         console.error('Error while searching items in server', error)
     }
