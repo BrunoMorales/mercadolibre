@@ -17,19 +17,21 @@ const Result: FunctionComponent<resultProps> = ({ data }): ReactElement => {
     } = data;
 
     return (
-        <Link className='result' to={`/items/${id}`}>
+        <Link className='result' to={{ pathname: `/items/${id}`, state: { product: data } }}>
             <img src={thumbnail} alt='imagen_articulo' className='thumbnail' />
-            <div>
-                <p className='result-price'>
-                    $ {Math.floor(price)}
+            <div className='result-content'>
+                <div className='result-header'>
+                    <p className='result-price'>
+                        $ {Math.floor(price)}
+                    </p>
+                    <h2 className='result-title'>
+                        {title}
+                    </h2>
+                </div>
+                <p className='result-location'>
+                    {state_name}
                 </p>
-                <h2 className='result-title'>
-                    {title}
-                </h2>
             </div>
-            <p className='result-location'>
-                {state_name}
-            </p>
         </Link>
     )
 }

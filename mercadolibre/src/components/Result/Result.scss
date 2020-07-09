@@ -9,27 +9,40 @@
     align-items: stretch;
     text-decoration: none;
     color: black;
-    flex-wrap: wrap;
     
     .thumbnail{
         object-fit: contain;
+        min-height: 100%;
         margin-right: 16px;
     }
-    .result-price{
-        margin: 0 0 12px 0;
-    }
-    .result-title{
-        margin:0;
-        font-weight: 500;
-    }
-    .result-location{
-        margin-left:auto;
-        margin-right: 48px;
-        min-width: max-content;
+    
+    .result-content{
+        
+        .result-header{
+
+            .result-price{
+                margin: 0 0 12px 0;
+            }
+            .result-title{
+                margin:0;
+                font-weight: 500;
+            }
+        }
+        .result-location{
+            margin-left:auto;           
+            padding-left: 24px;
+            margin-right: 48px;
+            min-width: max-content;
+            justify-self: right;
+        }
     }
     :visited{
         .result-title{
             color: navy;
         }    
+     }
+
+     @media ( min-width: $desktop ){
+
      }
 }

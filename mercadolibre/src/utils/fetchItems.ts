@@ -16,7 +16,7 @@ export interface result {
 
 const fetchItems = async (searchInput: string): Promise<result[] | undefined> => {
     try {
-        const response = await apiClient.get('/search', {
+        const response = await apiClient.get('/sites/MLA/search', {
             params: {
                 q: searchInput
             }
