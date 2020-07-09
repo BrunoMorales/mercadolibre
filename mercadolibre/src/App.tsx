@@ -1,15 +1,18 @@
 import React, { FunctionComponent, ReactElement } from 'react';
 import NavBar from './components/NavBar/NavBar';
-import './App.css';
+import SearchResults from './views/SearchResults/SearchResults';
+import { Route, Switch, BrowserRouter } from 'react-router-dom'
 
 const App: FunctionComponent = (): ReactElement => {
-  const submitSearch = (searchInput: string) => {
-
-  }
   return (
-    <main className="App">
-      <NavBar onSubmit={submitSearch} />
-    </main>
+    <BrowserRouter>
+      <NavBar />
+      <Switch>
+        <Route path='/items/:id' />
+        <Route path='/items' component={SearchResults} />
+        <Route path='/' />
+      </Switch>
+    </BrowserRouter >
   );
 }
 

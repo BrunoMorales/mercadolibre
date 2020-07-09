@@ -1,16 +1,14 @@
-$ml-base: #FFE600;
-$ml-gray: #ebebeb;
+@import "src/variables";
 
 .navbar{
     position: fixed;
     background-color: $ml-base;
     width: 100%;
-    max-height: 52px;
+    max-height: $navbar-height;
     
     
     .navbar-wrapper{
-        width: '100%';
-        max-width: 768px;
+        max-width: $max-col-width;
         display: flex;
         justify-content: center;
         align-items: stretch;

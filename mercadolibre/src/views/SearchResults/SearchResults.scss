@@ -1,0 +1,17 @@
+@import 'src/variables';
+
+.search-results{
+    min-width: 100%;
+    height: 100%;
+    padding-top: $navbar-height+50px;
+    background-color: $ml-gray;
+
+    .result-container{
+        max-width: $max-col-width;
+        width: 100%;
+        margin: 0 auto;
+        background-color: white;
+        padding: 0 16px;
+    }
+
+}
