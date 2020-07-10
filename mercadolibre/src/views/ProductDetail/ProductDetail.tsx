@@ -28,6 +28,10 @@ const getProductCondition = (product: product | undefined) => {
     })
 }
 
+const formatPrice = (value: number | undefined): string | undefined => {
+    return value?.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.");
+}
+
 
 const ProductDetail: FunctionComponent = (props: RouteProps): ReactElement => {
     const productId = props.location?.pathname.slice(7)
@@ -61,7 +65,7 @@ const ProductDetail: FunctionComponent = (props: RouteProps): ReactElement => {
                         {product?.title}
                     </h1>
                     <p className='product-price'>
-                        $ {product?.price}
+                        $ {formatPrice(product?.price)}
                     </p>
                     <button className='buy-btn'>
                         Comprar
