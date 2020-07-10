@@ -1,10 +1,10 @@
 import React, { FunctionComponent, ReactElement } from "react";
-import { result } from "../../utils/fetchItems"
+import { product } from "../../utils/fetchItems"
 import './Result.scss'
 import { Link } from "react-router-dom";
 
 interface resultProps {
-    data: result
+    data: product
 }
 
 const Result: FunctionComponent<resultProps> = ({ data }): ReactElement => {

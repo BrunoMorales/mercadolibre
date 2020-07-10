@@ -1,6 +1,6 @@
 import apiClient from './apiClient'
 
-export interface result {
+export interface product {
     id: string,
     title: string,
     thumbnail: string,
@@ -12,9 +12,10 @@ export interface result {
         city_name: string,
     },
     category_id: string,
+    descriptions: { id: string }[],
 }
 
-const fetchItems = async (searchInput: string): Promise<result[] | undefined> => {
+const fetchItems = async (searchInput: string): Promise<product[] | undefined> => {
     try {
         const response = await apiClient.get('/sites/MLA/search', {
             params: {
