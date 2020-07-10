@@ -5,6 +5,10 @@ import './ProductDetail.scss'
 import fetchProduct, { fetchProductDescription } from '../../utils/fetchProduct'
 
 interface product {
+    attributes: {
+        id: string,
+        value_name: string
+    }[],
     id: string,
     title: string,
     thumbnail: string,
@@ -16,8 +20,14 @@ interface product {
         city_name: string,
     },
     category_id: string,
-    descriptions: { id: string }[],
 }
+
+const getProductCondition = (product: product | undefined) => {
+    return product?.attributes.map((attribute: any) => {
+        if (attribute.id === 'ITEM_CONDITION') return attribute.value_name
+    })
+}
+
 
 const ProductDetail: FunctionComponent = (props: RouteProps): ReactElement => {
     const productId = props.location?.pathname.slice(7)
@@ -28,10 +38,7 @@ const ProductDetail: FunctionComponent = (props: RouteProps): ReactElement => {
         productId &&
             fetchProduct(productId)
                 .then(
-                    (product) => {
-                        setProduct(product);
-                        console.log(product)
-                    }
+                    (product) => setProduct(product)
                 )
             &&
             fetchProductDescription(productId)
@@ -44,28 +51,26 @@ const ProductDetail: FunctionComponent = (props: RouteProps): ReactElement => {
 
     return <section className='product-detail'>
         <div className='product-container'>
-            <div>
-                <img src={product?.thumbnail} alt='' className='thumbnail' />
-                <div>
-                    <p>
-                        {product?.condition} - {product?.sold_quantity} vendidos
+            <img src={product?.thumbnail} alt='imagen_producto' className='thumbnail' />
+            <header className='product-header'>
+                <div className=''>
+                    <p className='product-condition'>
+                        {getProductCondition(product)} - {product?.sold_quantity} vendidos
                     </p>
-                    <h1>
+                    <h1 className='product-title'>
                         {product?.title}
                     </h1>
-                    <p>
-                        {product?.price}
+                    <p className='product-price'>
+                        $ {product?.price}
                     </p>
-                    <button>
+                    <button className='buy-btn'>
                         Comprar
                     </button>
                 </div>
-            </div>
-            <div>
-                <p>
-                    {description}
-                </p>
-            </div>
+            </header>
+            <p className='product-description'>
+                {description}
+            </p>
         </div>
     </section>
 }

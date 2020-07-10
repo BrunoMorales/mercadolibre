@@ -1,5 +1,6 @@
 @import 'src/variables';
 
+$detail-padding:48px;
 
 .product-detail{
     min-width: 100%;
@@ -12,6 +13,37 @@
         width: 100%;
         margin: 0 auto;
         background-color: white;
-        padding: 0 16px;
+        
+       
+        .thumbnail{
+            object-fit: contain;
+            margin: 0 auto;
+            width:100%;
+            max-height: 500px;
+        }
+        .product-header{
+            display: flex;
+            flex-direction: column;
+            padding: 0 $detail-padding;
+            border-top: 1px solid $ml-gray;
+            .product-condition{
+
+            }
+            .product-title{
+
+            }
+            .product-price{
+
+            }
+            .buy-btn{
+                width: 100%;
+                border-radius: 4px;
+                color: white;
+                background-color: $ml-blue;
+            }
+        }
+        .product-description{
+            padding: $detail-padding;
+        }
     }
 }

@@ -1,6 +1,10 @@
 import apiClient from './apiClient'
 
 export interface product {
+    attributes: {
+        id: string,
+        value_name: string
+    }[],
     id: string,
     title: string,
     thumbnail: string,
@@ -22,11 +26,6 @@ const fetchItems = async (searchInput: string): Promise<product[] | undefined> =
                 q: searchInput
             }
         })
-        response.data?.results.map(
-            (el: any) => el?.attributes.map(
-                (al: any) => al.id === 'ITEM_CONDITION' && (el.condition = al.value_name)
-            )
-        )
         return (response.data.results)
     } catch (error) {
         console.error('Error while searching items in server', error)

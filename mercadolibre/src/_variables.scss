@@ -1,8 +1,22 @@
 $ml-base: #FFE600;
 $ml-gray: #ebebeb;
+$ml-blue: #3483fa;
 $max-col-width: 768px;
 $navbar-height: 52px;
 
 //breakpoints
-$tablet: 600px;
+$tablet: 768px;
 $desktop: 1024px;
+
+//mixins
+@mixin when-tablet {
+    @media (min-width:$tablet) {
+        @content
+    }
+};
+
+@mixin when-desktop {
+    @media (min-width:$desktop) {
+        @content
+    }
+};

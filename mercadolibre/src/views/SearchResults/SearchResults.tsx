@@ -24,8 +24,8 @@ const SearchResults: FunctionComponent = (props: RouteProps): ReactElement => {
     return (
         <section className='search-results'>
             <div className='result-container'>
-                {results?.slice(0, ELEMENTS_TO_SHOW).map((result) =>
-                    <Result data={result} />
+                {results?.slice(0, ELEMENTS_TO_SHOW).map((result, index) =>
+                    <Result data={result} key={index} />
                 )}
             </div>
         </section>
