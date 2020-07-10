@@ -22,6 +22,11 @@ const fetchItems = async (searchInput: string): Promise<product[] | undefined> =
                 q: searchInput
             }
         })
+        response.data?.results.map(
+            (el: any) => el?.attributes.map(
+                (al: any) => al.id === 'ITEM_CONDITION' && (el.condition = al.value_name)
+            )
+        )
         return (response.data.results)
     } catch (error) {
         console.error('Error while searching items in server', error)
