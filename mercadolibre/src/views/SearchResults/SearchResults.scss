@@ -7,7 +7,7 @@
     background-color: $ml-gray;
 
     .result-container{
-        max-width: $max-col-width;
+        @include max-content-width;
         width: 100%;
         margin: 0 auto;
         background-color: white;

@@ -1,7 +1,6 @@
 $ml-base: #FFE600;
 $ml-gray: #ebebeb;
 $ml-blue: #3483fa;
-$max-col-width: 768px;
 $navbar-height: 52px;
 
 //Font sizes
@@ -17,13 +16,28 @@ $desktop: 1024px;
 
 //mixins
 @mixin when-tablet {
-    @media (min-width:$tablet) {
+    @media (min-width: $tablet) {
         @content
     }
 };
 
 @mixin when-desktop {
-    @media (min-width:$desktop) {
+    @media (min-width: $desktop) {
         @content
     }
 };
+
+@mixin max-content-width{
+    @media (max-width: $tablet) {
+        max-width: 100%;
+        @content
+    };
+    @media (min-width: $tablet) {
+        max-width: 768px;
+        @content
+    };
+    @media (min-width: $desktop) {
+        max-width: 80%;
+        @content
+    };
+}

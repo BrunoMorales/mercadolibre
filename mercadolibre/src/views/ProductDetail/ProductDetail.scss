@@ -9,41 +9,56 @@ $detail-padding:30px;
     background-color: $ml-gray;
 
     .product-container{
-        max-width: $max-col-width;
+        @include max-content-width;
         width: 100%;
         margin: 0 auto;
         background-color: white;
-        
        
-        .thumbnail{
-            object-fit: contain;
-            margin: 0 auto;
-            width:100%;
-            max-height: 500px;
-        }
         .product-header{
-            display: flex;
-            flex-direction: column;
-            padding: 0 $detail-padding;
-            border-top: 1px solid $ml-gray;
-            .product-condition{
-                font-size:  $text-sm;
-                color: gray;
+            @include when-desktop{
+                display: flex;
             }
-            .product-title{
-                font-weight: 400;
+
+            .thumbnail{
+                object-fit: contain;
+                margin: 0 auto;
+                width:100%;
+                max-height: 282px;
+                @include when-desktop{
+                    max-height: unset;
+                }
             }
-            .product-price{
-                font-size:  $text-xl;
-                font-weight: 300;
-            }
-            .buy-btn{
-                width: 100%;
-                height:50px;
-                border: none;
-                border-radius: 4px;
-                color: white;
-                background-color: $ml-blue;
+            .product-header-container{
+                display: flex;
+                flex-direction: column;
+                padding: 32px $detail-padding 0;
+                border-top: 1px solid $ml-gray;
+                .product-condition{
+                    margin: 0 0 24px;
+                    font-size:  $text-sm;
+                    color: gray;
+                }
+                .product-title{
+                    margin: 0 0 24px;
+                    font-weight: 400;
+                    @include when-desktop{
+                        font-weight: 700;
+                    }
+                }
+                .product-price{
+                    margin: 0 0 48px;
+                    font-size:  $text-xl;
+                    font-weight: 300;
+                }
+                .buy-btn{
+                    margin: 0 0 32px;
+                    width: 100%;
+                    height:50px;
+                    border: none;
+                    border-radius: 4px;
+                    color: white;
+                    background-color: $ml-blue;
+                }
             }
         }
         .product-description{

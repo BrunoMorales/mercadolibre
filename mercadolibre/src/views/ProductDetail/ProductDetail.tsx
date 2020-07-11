@@ -55,9 +55,9 @@ const ProductDetail: FunctionComponent = (props: RouteProps): ReactElement => {
 
     return <section className='product-detail'>
         <div className='product-container'>
-            <img src={product?.thumbnail} alt='imagen_producto' className='thumbnail' />
-            <header className='product-header'>
-                <div className=''>
+            <div className='product-header'>
+                <img src={product?.thumbnail} alt='imagen_producto' className='thumbnail' />
+                <div className='product-header-container'>
                     <p className='product-condition'>
                         {getProductCondition(product)} - {product?.sold_quantity} vendidos
                     </p>
@@ -71,7 +71,8 @@ const ProductDetail: FunctionComponent = (props: RouteProps): ReactElement => {
                         Comprar
                     </button>
                 </div>
-            </header>
+            </div>
+
             <p className='product-description'>
                 {description}
             </p>

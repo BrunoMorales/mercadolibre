@@ -16,7 +16,6 @@ export interface product {
         city_name: string,
     },
     category_id: string,
-    descriptions: { id: string }[],
 }
 
 const fetchItems = async (searchInput: string): Promise<product[] | undefined> => {
