@@ -1,5 +1,5 @@
 import apiClient from './apiClient'
-import { product } from './fetchItems'
+import { product } from './types'
 
 export const fetchProduct = async (productId: string): Promise<product | undefined> => {
     try {

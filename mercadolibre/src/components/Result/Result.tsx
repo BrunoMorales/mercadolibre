@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactElement } from "react";
-import { product } from "../../utils/fetchItems"
 import './Result.scss'
 import { Link } from "react-router-dom";
+import { product } from "../../utils/types";
 
 interface resultProps {
     data: product

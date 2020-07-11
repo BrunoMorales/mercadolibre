@@ -2,25 +2,9 @@
 import React, { FunctionComponent, ReactElement, useState, useEffect } from 'react'
 import { RouteProps } from 'react-router-dom'
 import './ProductDetail.scss'
+import { product } from '../../utils/types'
 import fetchProduct, { fetchProductDescription } from '../../utils/fetchProduct'
-
-interface product {
-    attributes: {
-        id: string,
-        value_name: string
-    }[],
-    id: string,
-    title: string,
-    thumbnail: string,
-    price: number,
-    condition: string,
-    sold_quantity: number,
-    address: {
-        state_name: string,
-        city_name: string,
-    },
-    category_id: string,
-}
+import Categories from '../../components/Categories'
 
 const getProductCondition = (product: product | undefined) => {
     return product?.attributes.map((attribute: any) => {
@@ -33,27 +17,31 @@ const formatPrice = (value: number | undefined): string | undefined => {
 }
 
 
+
 const ProductDetail: FunctionComponent = (props: RouteProps): ReactElement => {
     const productId = props.location?.pathname.slice(7)
     const [product, setProduct] = useState<product | undefined>(undefined)
     const [description, setDescription] = useState<string | undefined>('')
 
     useEffect(() => {
-        productId &&
+        if (productId) {
             fetchProduct(productId)
                 .then(
-                    (product) => setProduct(product)
+                    (product) => {
+                        setProduct(product)
+                    }
                 )
-            &&
+
             fetchProductDescription(productId)
                 .then(
                     (desc) => setDescription(desc)
                 )
-
+        }
     }, [productId])
 
 
     return <section className='product-detail'>
+        <Categories categoryId={product?.category_id} />
         <div className='product-container'>
             <div className='product-header'>
                 <img src={product?.thumbnail} alt='imagen_producto' className='thumbnail' />
@@ -72,8 +60,10 @@ const ProductDetail: FunctionComponent = (props: RouteProps): ReactElement => {
                     </button>
                 </div>
             </div>
-
             <p className='product-description'>
+                <h2>
+                    Descripción del producto
+                </h2>
                 {description}
             </p>
         </div>

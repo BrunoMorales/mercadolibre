@@ -1,11 +1,11 @@
 @import 'src/variables';
 
-$detail-padding:30px;
+$detail-spacing: 30px;
 
 .product-detail{
     min-width: 100%;
     height: 100%;
-    padding-top: $navbar-height+50px;
+    padding-top: $navbar-height;
     background-color: $ml-gray;
 
     .product-container{
@@ -23,16 +23,17 @@ $detail-padding:30px;
                 object-fit: contain;
                 margin: 0 auto;
                 width:100%;
-                max-height: 282px;
+                max-height: 320px;
+                border-bottom: 1px solid $ml-gray ;
                 @include when-desktop{
-                    max-height: unset;
+                    max-height: 500px;
+                    margin: $detail-spacing;
                 }
             }
             .product-header-container{
                 display: flex;
                 flex-direction: column;
-                padding: 32px $detail-padding 0;
-                border-top: 1px solid $ml-gray;
+                padding: 32px $detail-spacing 0;
                 .product-condition{
                     margin: 0 0 24px;
                     font-size:  $text-sm;
@@ -62,7 +63,7 @@ $detail-padding:30px;
             }
         }
         .product-description{
-            padding: $detail-padding;
+            padding: 0 $detail-spacing;
             word-wrap: break-word;
         }
     }

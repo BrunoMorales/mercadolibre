@@ -1,11 +1,11 @@
 import React, { FunctionComponent, ReactElement, useEffect, useState } from "react";
 import './SearchResults.scss'
 import { RouteProps } from 'react-router-dom'
-import fetchItems, { product } from "../../utils/fetchItems";
+import fetchResults from "../../utils/fetchResults";
 import Result from "../../components/Result";
+import { product, filter } from "../../utils/types";
 
 const ELEMENTS_TO_SHOW: number = 4
-
 
 const SearchResults: FunctionComponent = (props: RouteProps): ReactElement => {
     const params = props.location?.search.slice(8)
@@ -13,10 +13,10 @@ const SearchResults: FunctionComponent = (props: RouteProps): ReactElement => {
 
     useEffect(() => {
         params ?
-            fetchItems(params)
-                .then((res) =>
-                    setResults(res)
-                )
+            fetchResults(params)
+                .then((res) => {
+                    setResults(res?.results)
+                })
             :
             setResults([])
     }, [params])
