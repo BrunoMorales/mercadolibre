@@ -6,14 +6,11 @@
     padding-top: $navbar-height;
     background-color: $ml-gray;
 
-    .categories{
-
-    }
     .result-container{
         @include max-content-width;
         margin: 0 auto;
         background-color: white;
-        padding: 0 16px;
+        
     }
 
 }

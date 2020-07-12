@@ -10,16 +10,14 @@ const ELEMENTS_TO_SHOW: number = 4
 
 const getCategoryWithMostResults = (available_filters: available_filter[] | undefined): string => {
     //This should be done in back end
+    const categoryFilter: available_filter | undefined = available_filters?.find(
+        (available_filter) => available_filter.id === 'category'
+    )
     let finalCategory: category = { id: '', name: '', results: 0 };
-    available_filters?.map((available_filter) => {
-        if (available_filter.id === 'category') {
-            available_filter.values.map((category) => {
-                if (category.results > (finalCategory.results || 0)) { finalCategory = category }
-                return
-            })
-        }
-        return;
-    })
+    categoryFilter?.values.map(
+        (category) => {
+            if (category.results > (finalCategory.results || 0)) finalCategory = category
+        })
     return finalCategory.id
 }
 

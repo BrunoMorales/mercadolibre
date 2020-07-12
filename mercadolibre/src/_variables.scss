@@ -1,3 +1,4 @@
+//constants
 $ml-base: #FFE600;
 $ml-gray: #ebebeb;
 $ml-blue: #3483fa;
@@ -13,7 +14,7 @@ $text-xl: 40px;
 //breakpoints
 $tablet: 768px;
 $desktop: 1024px;
-$desktop-xl: 1280;
+$desktop-xl: 1280px;
 
 //mixins
 @mixin when-tablet {
@@ -31,14 +32,14 @@ $desktop-xl: 1280;
 @mixin max-content-width{
     @media (max-width: $tablet) {
         max-width: 100%;
-        @content
+    };
+    @media (min-width: $tablet) {
+        max-width: 90%;
     };
     @media (min-width: $desktop) {
         max-width: 80%;
-        @content
     };
     @media (min-width: $desktop-xl) {
-        max-width:1280px;
-        @content
+        max-width: 1280px;
     };
 }

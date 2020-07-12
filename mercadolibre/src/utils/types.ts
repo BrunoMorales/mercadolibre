@@ -14,6 +14,7 @@ export interface product {
         city_name: string,
     },
     category_id: string,
+    shipping: { free_shipping: boolean },
 }
 
 

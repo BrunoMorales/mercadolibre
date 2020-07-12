@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactElement } from 'react';
 import NavBar from './components/NavBar/NavBar';
 import SearchResults from './views/SearchResults/SearchResults';
 import { Route, Switch, BrowserRouter } from 'react-router-dom'
-import ProductDetail from './views/ProductDetail/inidex';
+import ProductDetail from './views/ProductDetail';
 
 const App: FunctionComponent = (): ReactElement => (
   <BrowserRouter>
