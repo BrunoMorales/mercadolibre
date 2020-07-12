@@ -7,11 +7,12 @@ $detail-spacing: 30px;
     height: 100%;
     padding-top: $navbar-height;
     background-color: $ml-gray;
-
+    
     .product-container{
         @include max-content-width;
         width: 100%;
         margin: 0 auto;
+        padding-bottom: 48px;
         background-color: white;
        
         .product-header{
@@ -28,6 +29,7 @@ $detail-spacing: 30px;
                 @include when-desktop{
                     max-height: 500px;
                     margin: $detail-spacing;
+                    border: none;
                 }
             }
             .product-header-container{

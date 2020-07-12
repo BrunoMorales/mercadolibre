@@ -7,16 +7,16 @@ import fetchProduct, { fetchProductDescription } from '../../utils/fetchProduct'
 import Categories from '../../components/Categories'
 
 const getProductCondition = (product: product | undefined) => {
+    //this could be done in back end
     return product?.attributes.map((attribute: any) => {
         if (attribute.id === 'ITEM_CONDITION') return attribute.value_name
     })
 }
 
 const formatPrice = (value: number | undefined): string | undefined => {
+    //This could be done in back end
     return value?.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.");
 }
-
-
 
 const ProductDetail: FunctionComponent = (props: RouteProps): ReactElement => {
     const productId = props.location?.pathname.slice(7)
@@ -27,11 +27,8 @@ const ProductDetail: FunctionComponent = (props: RouteProps): ReactElement => {
         if (productId) {
             fetchProduct(productId)
                 .then(
-                    (product) => {
-                        setProduct(product)
-                    }
+                    (product) => setProduct(product)
                 )
-
             fetchProductDescription(productId)
                 .then(
                     (desc) => setDescription(desc)

@@ -18,8 +18,7 @@ export interface product {
 
 
 export interface searchResult {
-    available_filters: available_filter[],
-    filters: filter[],
+    available_filters: available_filter[]
     results: product[]
 }
 
@@ -49,4 +48,5 @@ export interface available_filter {
 export interface category {
     id: string,
     name: string,
+    results?: number,
 }
