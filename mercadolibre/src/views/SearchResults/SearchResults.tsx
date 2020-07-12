@@ -4,7 +4,7 @@ import { RouteProps } from 'react-router-dom'
 import fetchResults from "../../utils/fetchResults";
 import Result from "../../components/Result";
 import { category, available_filter, searchResult } from "../../utils/types";
-import Breadcrumb from "../../components/Categories";
+import Breadcrumb from "../../components/Breadcrumb";
 
 const ELEMENTS_TO_SHOW: number = 4
 

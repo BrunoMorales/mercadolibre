@@ -12,20 +12,25 @@ const NavBar: FunctionComponent = (): ReactElement => {
     const submitOnEnter = (e: React.KeyboardEvent) => { if (e.keyCode === 13) { routerHistory.push(searchLink()) } }
 
     return (
-        <nav className='navbar'>
+        <div className='navbar'>
             <div className='navbar-wrapper'>
                 <Link to='/' >
                     <img alt='ml_logo' className='nav-logo'
                         src='https://http2.mlstatic.com/frontend-assets/ui-navigation/5.6.0/mercadolibre/logo__small.png' />
                 </Link>
                 <div className='search-wrapper'>
-                    <input value={searchInput} onChange={handleType} className='search-box' placeholder='Nunca dejes de buscar' onKeyDown={submitOnEnter} />
+                    <input
+                        value={searchInput}
+                        onChange={handleType}
+                        placeholder='Nunca dejes de buscar'
+                        className='search-box'
+                        onKeyDown={submitOnEnter} />
                     <Link to={searchLink()} className='search-button'>
                         <i className='material-icons'>search</i>
                     </Link>
                 </div>
             </div>
-        </nav>
+        </div>
     )
 }
 

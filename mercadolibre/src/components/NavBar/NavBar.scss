@@ -19,7 +19,6 @@
             object-fit: contain;
             margin-right: 12px;
         }
-
         .search-wrapper{
             display: flex;
             align-items: stretch;
@@ -35,7 +34,6 @@
                 border-bottom-left-radius: 4px;
                 padding: 0 8px;
             };
-
             .search-button{
                 width:40px;
                 display:flex;
@@ -45,7 +43,9 @@
                 background-color: $ml-gray;
                 color: darkgray;
                 align-items: center;
-            };
+                justify-content: center;
+                text-decoration: none;
+               };
         };
     };
 }

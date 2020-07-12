@@ -2,7 +2,6 @@
 
 .result{
     display:flex;
-    width: 100%;
     background-color: white;
     border-bottom: 1px solid $ml-gray;
     padding: 24px 16px;
@@ -49,11 +48,9 @@
         .result-location{
             font-size: $text-sm;
             @include when-desktop{      
-                font-size: $text-md;     
-                padding-left: 24px;
-                margin-right: 48px;
-                min-width: max-content;
-                justify-self: right;
+                font-size: $text-md;   
+                margin: 0 48px 0 24px;
+                min-width: 20%;
             }
         }
     }

@@ -1,7 +1,7 @@
 
 import React, { FunctionComponent, ReactElement, useState, useEffect } from 'react'
 import { RouteProps } from 'react-router-dom'
-import Categories from '../../components/Categories'
+import Breadcrumb from '../../components/Breadcrumb'
 import fetchProduct, { fetchProductDescription } from '../../utils/fetchProduct'
 import { formatPrice } from '../../utils/formatters'
 import { product } from '../../utils/types'
@@ -36,7 +36,7 @@ const ProductDetail: FunctionComponent = (props: RouteProps): ReactElement => {
 
     return (
         <section className='product-detail'>
-            <Categories categoryId={product?.category_id} />
+            <Breadcrumb categoryId={product?.category_id} />
             <div className='product-container'>
                 <div className='product-header'>
                     <img src={product?.thumbnail} alt='imagen_producto' className='thumbnail' />
