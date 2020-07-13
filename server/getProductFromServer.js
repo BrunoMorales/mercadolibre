@@ -5,21 +5,45 @@ const fetch = require('node-fetch')
 
 const getProductById = (req, res) => {
     const { productId } = req.params
+
     fetch(`${API}/items/${productId}`)
         .then(res => res.json())
         .then(data => {
-            const product = buildProductPayload(data)
-            res.send(product)
+            buildProductPayload(data).then(
+                product => res.send(product)
+            )
         })
 }
 
-const buildProductPayload = (rawProduct) => ({
-    author,
-    item: {
-        ...buildBaseItem(rawProduct),
-        sold_quantity: rawProduct.sold_quantity,
-        description: 'text',
-    }
-})
+const buildProductPayload = async (rawProduct) => (
+    fetch(`${API}/items/${rawProduct.id}/description`)
+        .then(res => res.json())
+        .then(res => {
+            return {
+                author,
+                item: {
+                    ...buildBaseItem(rawProduct),
+                    sold_quantity: rawProduct.sold_quantity,
+                    category: rawProduct.category_id,
+                    description: res.plain_text
+                }
+            }
+        })
+        .catch(error => {
+            console.log('Error while fetching product description.', error)
+            return (
+                {
+                    author,
+                    item: {
+                        ...buildBaseItem(rawProduct),
+                        sold_quantity: rawProduct.sold_quantity,
+                        category: rawProduct.category_id,
+                        description: ''
+                    }
+                })
+        })
+)
+
+
 
 module.exports = getProductById

@@ -17,17 +17,12 @@ export interface product {
     shipping: { free_shipping: boolean },
 }
 
-
-export interface searchResult {
-    author: {
-        name: string,
-        lastname: string,
-    },
-    category_id: string,
-    items: item[]
+interface author {
+    name: string,
+    lastname: string,
 }
 
-export interface item {
+interface item {
     id: string,
     title: string,
     price: {
@@ -37,7 +32,27 @@ export interface item {
     },
     picture: string,
     condition: string,
-    free_shipping: boolean,
+    free_shipping: boolean
+}
+
+export interface searchResult {
+    author: author,
+    category_id: string,
+    items: resultItem[]
+}
+
+export interface productResponse {
+    author: author,
+    item: productItem
+}
+
+export interface productItem extends item {
+    sold_quantity: number,
+    description: string,
+    category: string
+}
+
+export interface resultItem extends item {
     address: string
 }
 
