@@ -25,15 +25,6 @@ app.get('/', (req, res) => {
 
 app.get('/api/items/:productId', getProductById)
 
-app.get('/api/descriptions/:productId', (req, res) => {
-    const { productId } = req.params
-    fetch(`${API}/items/${productId}/description`)
-        .then(res => res.json())
-        .then(data => {
-            res.send(data)
-        })
-})
-
 app.get('/api/category/:categoryId', (req, res) => {
     const { categoryId } = req.params
     fetch(`${API}/categories/${categoryId}`)
