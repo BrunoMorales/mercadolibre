@@ -4,6 +4,7 @@ import { product } from './types'
 export const fetchProduct = async (productId: string): Promise<product | undefined> => {
     try {
         const response = await apiClient.get(`/api/items/${productId}`)
+        console.log(response.data)
         return (response.data)
     } catch (error) {
         console.error('Error while searching product in server. ', error)

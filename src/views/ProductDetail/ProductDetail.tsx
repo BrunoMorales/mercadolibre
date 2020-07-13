@@ -55,12 +55,15 @@ const ProductDetail: FunctionComponent = (props: RouteProps): ReactElement => {
                     </button>
                     </div>
                 </div>
-                <p className='product-description'>
+                <div className='product-description'>
                     <h2>
                         Descripción del producto
                 </h2>
-                    {description}
-                </p>
+                    <p >
+
+                        {description}
+                    </p>
+                </div>
             </div>
         </section>
     )

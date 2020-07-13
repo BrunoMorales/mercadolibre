@@ -2,6 +2,7 @@ const express = require('express');
 const fetch = require('node-fetch')
 const path = require('path');
 const resultAPI = require('./getResultFromServer')
+const getProductById = require('./getProductFromServer')
 const app = express();
 const { API } = require('./constants')
 
@@ -22,15 +23,7 @@ app.get('/', (req, res) => {
 });
 
 
-app.get('/api/items/:productId', (req, res) => {
-    const { productId } = req.params
-    fetch(`${API}/items/${productId}`)
-        .then(res => res.json())
-        .then(data => {
-            res.send(data)
-        })
-
-})
+app.get('/api/items/:productId', getProductById)
 
 app.get('/api/descriptions/:productId', (req, res) => {
     const { productId } = req.params
