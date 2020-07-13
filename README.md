@@ -41,7 +41,7 @@ Also, be sure to have `git` available in your PATH, `npm` might need it (You can
   To start running server on port 4002:
 
 ```
-    $ nose server
+    $ node server
 ```
 
  To start the application on the port 3000 with a watcher.
