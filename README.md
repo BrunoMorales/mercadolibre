@@ -1,4 +1,4 @@
-# MercadoLibre
+# mercadolibre
 
 Sample app with a box that searches for products, displays them and provides a detailed view.
 ---
@@ -30,8 +30,8 @@ Also, be sure to have `git` available in your PATH, `npm` might need it (You can
 ## Install
 
 ```
-    $ git clone git@github.com:BrunoMorales/MercadoLibre.git
-    $ cd MercadoLibre
+    $ git clone git@github.com:BrunoMorales/mercadolibre.git
+    $ cd mercadolibre
     $ npm install
 ```
 
