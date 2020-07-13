@@ -1,10 +1,12 @@
 const express = require('express');
 const fetch = require('node-fetch')
 const path = require('path');
+const resultAPI = require('./getResultFromServer')
 const app = express();
+const { API } = require('./constants')
 
 // CORS
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     req.header('x_application_id');
     res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
@@ -19,9 +21,6 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-const API = 'https://api.mercadolibre.com'
-
-app.get('/')
 
 app.get('/api/items/:productId', (req, res) => {
     const { productId } = req.params
@@ -52,15 +51,10 @@ app.get('/api/category/:categoryId', (req, res) => {
 
 })
 
-app.get('/api/items', (req, res) => {
-    const { q } = req.query;
-    fetch(`${API}/sites/MLA/search?q=${q}`)
-        .then(res => res.json())
-        .then(data => {
-            res.send(data);
-        })
-})
+app.get('/api/items', resultAPI.getResultsFromServer)
 
 
 
 app.listen(process.env.PORT || 4002);
+
+
