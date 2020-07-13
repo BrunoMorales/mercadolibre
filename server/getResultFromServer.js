@@ -1,8 +1,8 @@
 
 const fetch = require('node-fetch')
-const constants = require('../constants')
+const constants = require('./constants')
 const { API, author } = constants
-const { getCategoryWithMostResults } = require('../getCategoryBreadcrumb');
+const { getCategoryWithMostResults } = require('./getCategoryBreadcrumb');
 
 const getResultsFromServer = (req, res) => {
     const { q } = req.query;
@@ -24,12 +24,13 @@ const buildResultsPayload = (data) => ({
         price: {
             //TODO check decimals and currency
             currency: 'ARS',
-            amount: result.price,
+            amount: Math.floor(result.price),
             decimals: result.price % 1,
         },
         picture: result.thumbnail,
         condition: result.condition,
-        free_shipping: result.shipping.free_shipping
+        free_shipping: result.shipping.free_shipping,
+        address: result.address.state_name
     }))
 });
 

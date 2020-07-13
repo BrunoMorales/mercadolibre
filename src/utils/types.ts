@@ -19,9 +19,28 @@ export interface product {
 
 
 export interface searchResult {
-    available_filters: available_filter[]
-    results: product[]
+    author: {
+        name: string,
+        lastname: string,
+    },
+    category_id: string,
+    items: item[]
 }
+
+export interface item {
+    id: string,
+    title: string,
+    price: {
+        currency: string,
+        amount: number,
+        decimals: number
+    },
+    picture: string,
+    condition: string,
+    free_shipping: boolean,
+    address: string
+}
+
 
 export interface filter {
     id: string,
