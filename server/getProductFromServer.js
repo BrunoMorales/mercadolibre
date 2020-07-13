@@ -12,6 +12,9 @@ const getProductById = (req, res) => {
                 product => res.send(product)
             )
         })
+        .catch((error) => {
+            console.info('Error while fetching product', error)
+        })
 }
 
 const buildProductPayload = async (rawProduct) => (
@@ -27,6 +30,18 @@ const buildProductPayload = async (rawProduct) => (
             }
         })
         )
+        .catch((error) => {
+            console.info('Error while fetching product description. Returning description as undefined.', error)
+            return {
+                author,
+                item: {
+                    ...buildBaseItem(rawProduct),
+                    sold_quantity: rawProduct.sold_quantity,
+                    category: rawProduct.category_id,
+                    description: undefined
+                }
+            }
+        })
 )
 
 

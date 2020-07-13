@@ -6,7 +6,7 @@ const getCategoryWithMostResults = (available_filters) => {
         (available_filter) => available_filter.id === 'category'
     )
     let finalCategory = { id: '', name: '', results: 0 };
-    categoryFilter.values.map(
+    categoryFilter && categoryFilter.values.map(
         (category) => {
             if (category.results > (finalCategory.results || 0)) finalCategory = category
         })
@@ -20,7 +20,9 @@ const getBreadcrumbByCategoryId = (req, res) => {
         .then(data => {
             res.send(data)
         })
-
+        .catch((error) => {
+            console.info('Error while fetching categories', error)
+        })
 }
 
 module.exports = { getCategoryWithMostResults, getBreadcrumbByCategoryId }

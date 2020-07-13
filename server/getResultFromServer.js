@@ -13,13 +13,15 @@ const getResultsFromServer = (req, res) => {
             const results = buildResultsPayload(data)
             res.send(results);
         })
+        .catch((error) => {
+            console.info('Error while fetching results', error)
+        })
 }
 
 
 
 const buildResultsPayload = (data) => ({
     author,
-    //TODO change to categories
     category_id: getCategoryWithMostResults(data.available_filters),
     items: data.results.map((result) => ({
         ...buildBaseItem(result),
