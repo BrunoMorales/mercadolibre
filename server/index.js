@@ -1,10 +1,9 @@
 const express = require('express');
-const fetch = require('node-fetch')
 const path = require('path');
-const resultAPI = require('./getResultFromServer')
+const { getResultsFromServer } = require('./getResultFromServer')
 const getProductById = require('./getProductFromServer')
+const { getBreadcrumbByCategoryId } = require('./getCategoryBreadcrumb')
 const app = express();
-const { API } = require('./constants')
 
 // CORS
 app.use((req, res, next) => {
@@ -25,17 +24,9 @@ app.get('/', (req, res) => {
 
 app.get('/api/items/:productId', getProductById)
 
-app.get('/api/category/:categoryId', (req, res) => {
-    const { categoryId } = req.params
-    fetch(`${API}/categories/${categoryId}`)
-        .then(res => res.json())
-        .then(data => {
-            res.send(data)
-        })
+app.get('/api/category/:categoryId', getBreadcrumbByCategoryId)
 
-})
-
-app.get('/api/items', resultAPI.getResultsFromServer)
+app.get('/api/items', getResultsFromServer)
 
 
 

@@ -1,3 +1,6 @@
+const fetch = require('node-fetch')
+const { API } = require('./constants')
+
 const getCategoryWithMostResults = (available_filters) => {
     const categoryFilter = available_filters.find(
         (available_filter) => available_filter.id === 'category'
@@ -10,4 +13,14 @@ const getCategoryWithMostResults = (available_filters) => {
     return finalCategory.id
 }
 
-module.exports = { getCategoryWithMostResults }
+const getBreadcrumbByCategoryId = (req, res) => {
+    const { categoryId } = req.params
+    fetch(`${API}/categories/${categoryId}`)
+        .then(res => res.json())
+        .then(data => {
+            res.send(data)
+        })
+
+}
+
+module.exports = { getCategoryWithMostResults, getBreadcrumbByCategoryId }
