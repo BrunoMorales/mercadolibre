@@ -1,11 +1,11 @@
 import React, { FunctionComponent, ReactElement } from "react";
 import './Result.scss'
 import { Link } from "react-router-dom";
-import { item } from "../../utils/types";
 import { formatPrice } from "../../utils/formatters";
+import { resultItem } from "../../utils/types";
 
 interface resultProps {
-    data: item
+    data: resultItem
 }
 
 const Result: FunctionComponent<resultProps> = ({ data }): ReactElement => {

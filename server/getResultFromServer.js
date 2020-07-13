@@ -3,6 +3,7 @@ const fetch = require('node-fetch')
 const constants = require('./constants')
 const { API, author } = constants
 const { getCategoryWithMostResults } = require('./getCategoryBreadcrumb');
+const buildBaseItem = require('./buildBaseItem')
 
 const getResultsFromServer = (req, res) => {
     const { q } = req.query;
@@ -14,22 +15,14 @@ const getResultsFromServer = (req, res) => {
         })
 }
 
+
+
 const buildResultsPayload = (data) => ({
     author,
     //TODO change to categories
     category_id: getCategoryWithMostResults(data.available_filters),
     items: data.results.map((result) => ({
-        id: result.id,
-        title: result.title,
-        price: {
-            //TODO check decimals and currency
-            currency: 'ARS',
-            amount: Math.floor(result.price),
-            decimals: result.price % 1,
-        },
-        picture: result.thumbnail,
-        condition: result.condition,
-        free_shipping: result.shipping.free_shipping,
+        ...buildBaseItem(result),
         address: result.address.state_name
     }))
 });
