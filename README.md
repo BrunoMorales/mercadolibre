@@ -1,8 +1,8 @@
 # mercadolibre
 
 Sample app with a box that searches for products, displays them and provides a detailed view.
----
 
+---
 
 
 ## Requirements
@@ -33,23 +33,29 @@ Also, be sure to have `git` available in your PATH, `npm` might need it (You can
     $ git clone git@github.com:BrunoMorales/mercadolibre.git
     $ cd mercadolibre
     $ npm install
+    $ npm run build
 ```
 
 
 ## Running the project
-  
-  It will start the application on the port 3000 with a watcher.
+  To start running server on port 4002:
+
+```
+    $ nose server
+```
+
+ To start the application on the port 3000 with a watcher.
 
 ```
     $ npm start
 ```
 
-## Running the project on development
-  
-  It will start the application on the port 3000 with a watcher.
+Then navigate to `http://localhost:3000` on the browser.
 
-    $ npm run start-dev
-    
-  Then navigate to `http://localhost:3000` on the browser.
+
+
+
+
+
 
 Thank you for your consideration.
