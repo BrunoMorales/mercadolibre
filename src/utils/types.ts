@@ -1,22 +1,3 @@
-export interface product {
-    attributes: {
-        id: string,
-        value_name: string
-    }[],
-    id: string,
-    title: string,
-    thumbnail: string,
-    price: number,
-    condition: string,
-    sold_quantity: number,
-    address: {
-        state_name: string,
-        city_name: string,
-    },
-    category_id: string,
-    shipping: { free_shipping: boolean },
-}
-
 interface author {
     name: string,
     lastname: string,
